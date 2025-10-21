@@ -1,0 +1,104 @@
+/* .slider {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  overflow: hidden;
+  margin-top: 25px;
+}
+.slider .slide-track {
+  display: flex;
+  animation: scroll 40s linear infinite;
+  -webkit-animation: scroll 40s linear infinite;
+  width: calc(125px * 22);
+  transition: opacity 1s ease-in-out;
+}
+.slider .slide {
+  width: 125px;
+}
+.slider .slide img {
+  width: 100%;
+  opacity: 0.2;
+}
+.slider .slide img:hover {
+  opacity: 1;
+}
+@keyframes scroll {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(calc(-125px * 11));
+    transform: translateX(calc(-125px * 11));
+  }
+}
+ */
+.slider {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  overflow: hidden;
+  margin-top: 25px;
+  position: relative;
+}
+
+.slider::before,
+.slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px; /* Degradado para suavizar bordes (opcional) */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.slider::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.slider::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.slide-track {
+  display: flex;
+  animation: scroll 20s linear infinite; /* Reduce el tiempo para mayor fluidez */
+  width: calc(125px * 21); /* Ancho total de UNA copia de las marcas */
+}
+
+.slide {
+  width: 125px;
+  flex-shrink: 0; /* Evita que las imágenes se compriman */
+}
+
+.slide img {
+  width: 100%;
+  opacity: 0.2;
+  transition: opacity 0.3s ease; /* Transición suave al hacer hover */
+}
+
+.slide img:hover {
+  opacity: 1;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      calc(-125px * 7)
+    ); /* Desplaza solo 7 marcas (ajusta según necesidad) */
+  }
+}
